@@ -1,0 +1,31 @@
+import joblib # type: ignore
+import pandas as pd  # type: ignore
+
+model = joblib.load('../models/flood_model.pkl')
+print("model loaded successfully")
+
+new_data = pd.DataFrame({
+    "MonsoonIntensity": [75],
+    "TopographyDrainage": [60],
+    "RiverManagement": [80],
+    "Deforestation": [40],
+    "Urbanization": [70],
+    "ClimateChange": [65],
+    "DamsQuality": [50],
+    "Siltation": [55],
+    "AgriculturalPractices": [60],
+    "Encroachments": [50],
+    "IneffectiveDisasterPreparedness": [45],
+    "DrainageSystems": [70],
+    "CoastalVulnerability": [65],
+    "Landslides": [30],
+    "Watersheds": [50],
+    "DeterioratingInfrastructure": [55],
+    "PopulationScore": [80],
+    "WetlandLoss": [60],
+    "InadequatePlanning": [50],
+    "PoliticalFactors": [55]
+})
+
+pred = model.predict(new_data)
+print("Predicted flood probabailtity", pred[0])
