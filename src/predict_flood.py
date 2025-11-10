@@ -1,12 +1,18 @@
 import joblib # type: ignore
 import pandas as pd  # type: ignore
+import os 
 
-model = joblib.load('../models/flood_model.pkl')
-print("model loaded successfully")
+BASE_DIR  = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, '..', 'model', 'flood_model.pkl')
+
+
+model = joblib.load(MODEL_PATH)
+
+print("model loaded successfully")        
 
 new_data = pd.DataFrame({
     "MonsoonIntensity": [75],
-    "TopographyDrainage": [60],
+    # "TopographyDrainage": [60],
     "RiverManagement": [80],
     "Deforestation": [40],
     "Urbanization": [70],
@@ -27,5 +33,6 @@ new_data = pd.DataFrame({
     "PoliticalFactors": [55]
 })
 
-pred = model.predict(new_data)
-print("Predicted flood probabailtity", pred[0])
+# pred = model.predict(new_data)
+
+# print("Predicted flood probabailtity", pred[0])

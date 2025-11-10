@@ -6,7 +6,7 @@ import joblib # type: ignore
 
 df = pd.read_csv("../data/processed/flood.csv")
 
-X = df[['MonsoonIntensity','TopographyDrainage','RiverManagement','Deforestation','Urbanization','ClimateChange','DamsQuality','Siltation','AgriculturalPractices','Encroachments','IneffectiveDisasterPreparedness','DrainageSystems','CoastalVulnerability','Landslides','Watersheds','DeterioratingInfrastructure','PopulationScore','WetlandLoss','InadequatePlanning','PoliticalFactors']]
+X = df[['MonsoonIntensity','RiverManagement','Deforestation','Urbanization','ClimateChange','DamsQuality','Siltation','AgriculturalPractices','Encroachments','IneffectiveDisasterPreparedness','DrainageSystems','CoastalVulnerability','Landslides','Watersheds','DeterioratingInfrastructure','PopulationScore','WetlandLoss','InadequatePlanning','PoliticalFactors']]
 
 y = df[["FloodProbability"]]
 
@@ -18,5 +18,4 @@ mod = KNeighborsRegressor()
 mod.fit(X_train, y_train)
 
 joblib.dump(mod, '../models/flood_model.pkl')
-
 print("training completed model saved as flood_model.pkl")
